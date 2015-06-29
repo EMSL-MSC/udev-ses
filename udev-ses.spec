@@ -22,6 +22,7 @@ disks that are in a compatible enclosure.
 cp 65-ses-slot.rules %{buildroot}/lib/udev/rules.d/ 
 cp get_slot %{buildroot}/lib/udev/
 cp get_slot2 %{buildroot}/lib/udev/
+%{__install} -d -m0775 %{buildroot}/lib/modules-load.d/
 cp udev-ses.conf %{buildroot}/lib/modules-load.d/
 
 %post
