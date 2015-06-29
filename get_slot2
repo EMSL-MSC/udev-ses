@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#example:  /sys/block/sdk/device/enclosure_device\:slot45\ \ \ \ \ \ \ /
+#echo $* >> /tmp/debug
+modprobe sg
+
+drive=${1/[0-9]/}
+
+if [ -d /sys/block/$drive/device/enclosure_device* ]
+then
+	name=`ls -d /sys/block/$drive/device/enclosure_device* | cut -d: -f 2 | tr -d ' '`
+	encid=`readlink /sys/block/$drive/device/enclosure_device* | cut -d/ -f 8`
+	dev=`ls /sys/class/enclosure/$encid/device/scsi_generic/`
+        sg_ses -p 7 /dev/$dev |grep $name | awk '{print "slot-"$2}'
+else
+	exit 1
+fi
