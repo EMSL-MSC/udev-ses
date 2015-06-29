@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#example:  /sys/block/sdk/device/enclosure_device\:slot45\ \ \ \ \ \ \ /
+#echo $* >> /tmp/debug
+
+drive=${1/[0-9]/}
+
+if [ -d /sys/block/$drive/device/enclosure_device* ]
+then
+	ls -d /sys/block/$drive/device/enclosure_device* | cut -d: -f 2 | tr -d ' '
+else
+	exit 1
+fi

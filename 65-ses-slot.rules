@@ -1,0 +1,3 @@
+KERNEL=="sd*", ENV{DEVTYPE}=="disk", ENV{ID_SERIAL}=="?*", PROGRAM="/lib/udev/get_slot %k", SYMLINK+="disk/by-slot/%c"
+
+KERNEL=="sd*", ENV{DEVTYPE}=="partition", ENV{ID_SERIAL}=="?*",PROGRAM="/lib/udev/get_slot %k", SYMLINK+="disk/by-slot/%c-part%n"
