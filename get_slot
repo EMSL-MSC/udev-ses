@@ -3,7 +3,7 @@
 #example:  /sys/block/sdk/device/enclosure_device\:slot45\ \ \ \ \ \ \ /
 #echo $* >> /tmp/debug
 
-drive=${1/[0-9]/}
+drive=${1/[0-9]*/}
 
 if [ -d /sys/block/$drive/device/enclosure_device* ]
 then

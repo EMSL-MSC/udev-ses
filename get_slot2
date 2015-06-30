@@ -4,7 +4,7 @@
 #echo $* >> /tmp/debug
 modprobe sg
 
-drive=${1/[0-9]/}
+drive=${1/[0-9]*/}
 
 if [ -d /sys/block/$drive/device/enclosure_device* ]
 then

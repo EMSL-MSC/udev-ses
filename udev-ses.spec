@@ -1,7 +1,7 @@
 Summary: Disk Links by slot in an SES enclosure.
 Name: udev-ses
 Version: 0.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: None
 Group: System Environment/Base
 URL: http://www.pnl.gov
@@ -26,6 +26,8 @@ cp get_slot2 %{buildroot}/lib/udev/
 cp udev-ses.conf %{buildroot}/lib/modules-load.d/
 
 %post
+/usr/sbin/modprobe sg
+/usr/sbin/udevadm trigger 
 %preun
 %clean
 %files
